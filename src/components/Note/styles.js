@@ -7,7 +7,6 @@ export const Container = styled.section`
     min-height: 10rem !important;
     padding: 2rem;
     position:relative;
-    transition: all .3s ease-in;
     
     input{
         outline: none;
@@ -32,6 +31,9 @@ export const Container = styled.section`
     }
 
     &:hover{
-        box-shadow: 1px 1px 5px black;
+        transform: scale(1.003);
+        transform-origin: 50% 50%;
+        box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.2);
+        transition: all .2s ease-out;
     }
 `

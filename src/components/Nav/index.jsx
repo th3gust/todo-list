@@ -11,20 +11,32 @@ const Nav = ({variant}) =>{
     const handleModalOpen = () => setOpenModal(true)
     const handleModalClose = () => setOpenModal(false)
 
+    const [isclicked, setisclicked] = useState([])
+
+    const handleClicked = (value) =>{
+        if (isclicked.includes(value)){
+            setisclicked(isclicked.filter((item => item !== value)))
+        } else{
+            setisclicked([value])
+        }
+    }
+
+        console.log(isclicked)
+        
     return (
         <Container>
             <TaskList>
-                <ListItem>Home <Mark number="1"/></ListItem>
-                <ListItem>Today <Mark number="1"/></ListItem>
-                <ListItem>Week <Mark number="1"/></ListItem>
+                <ListItem onClick={() => handleClicked('home')} $isclicked={isclicked.includes('home')}>Home <Mark number="1"/></ListItem>
+                <ListItem onClick={() => handleClicked('today')} $isclicked={isclicked.includes('today')}>Today <Mark number="1"/></ListItem>
+                <ListItem onClick={() => handleClicked('week')} $isclicked={isclicked.includes('week')}>Week <Mark number="1"/></ListItem>
                 <ListItem $variant>Projects
                     <TaskList $variant>
-                        <ListItem>Gym <Mark number="1"/></ListItem>
-                        <ListItem>Study <Mark number="1"/></ListItem>
-                        <ListItem>Work <Mark number="1"/></ListItem>
+                        <ListItem onClick={() => handleClicked('gym')} $isclicked={isclicked.includes('gym')}>Gym <Mark number="1"/></ListItem>
+                        <ListItem onClick={() => handleClicked('study')} $isclicked={isclicked.includes('study')}>Study <Mark number="1"/></ListItem>
+                        <ListItem onClick={() => handleClicked('work')} $isclicked={isclicked.includes('work')}>Work <Mark number="1"/></ListItem>
                     </TaskList>
                 </ListItem>
-                <ListItem>Notes</ListItem>
+                <ListItem onClick={() => handleClicked('todo')} $isclicked={isclicked.includes('todo')}>Notes</ListItem>
             </TaskList>
             <Mark onClick={handleModalOpen} number="+" variant/>
             <Modal open={openModal} closeModal = {handleModalClose}/>

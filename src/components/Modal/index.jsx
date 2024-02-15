@@ -1,4 +1,4 @@
-import { Container, Inner, InnerNav, Input, ModalList, ModalListItem, Outer, RightNotes, Tag, Textarea} from "./styles";
+import { Container, ForNotes, ForProjects, Inner, InnerNav, Input, ModalList, ModalListItem, Outer, RightSide, Tag, Textarea} from "./styles";
 import Header from "../Header";
 import { useContext, useState } from "react";
 import { NotesContext } from "../../contexts/Notes";
@@ -53,11 +53,25 @@ const Modal = ({open=false, closeModal}) =>{
                             <ModalListItem onClick={() => handleClicked('note')} $isclicked={isclicked.includes('note')}>Note</ModalListItem>
                         </ModalList>
                     </InnerNav>
-                    <RightNotes>
-                        <Input placeholder="Title" value={titleNote} onChange={(e) => setTitleNote (e.target.value)}/>
-                        <Textarea placeholder="Details" value={detailsNote} onChange={(e) => setDetailsNote (e.target.value)}/>
-                        <Tag onClick={handleNotes}>CREATE NOTE</Tag>
-                    </RightNotes>
+                    <RightSide>
+                        {
+                            isclicked.includes('note') && 
+                            <ForNotes>
+                                <Input placeholder="Title" value={titleNote} onChange={(e) => setTitleNote (e.target.value)}/>
+                                <Textarea placeholder="Details" value={detailsNote} onChange={(e) => setDetailsNote (e.target.value)}/>
+                                <Tag onClick={handleNotes}>CREATE NOTE</Tag>
+                            </ForNotes>
+                        }
+                        {
+                            isclicked.includes('project') &&
+                            <ForProjects>
+                                <Input placeholder="Title" value={titleNote} onChange={(e) => setTitleNote (e.target.value)}/>
+                                <Textarea placeholder="Details" value={detailsNote} onChange={(e) => setDetailsNote (e.target.value)}/>
+                                <Tag onClick={handleNotes}>CREATE PROJECT</Tag>
+                            </ForProjects>
+                        }
+                        
+                    </RightSide>
                 </Container>
             </Inner>
         </>

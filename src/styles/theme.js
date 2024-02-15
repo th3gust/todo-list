@@ -7,5 +7,7 @@ export default {
         pink: "#c38d9e",
         grey: "#b9b9b9",
         green: "#3ba395",
+        green_default: "#008000",
+        purple: "#501f3a",
     }
 }

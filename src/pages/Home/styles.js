@@ -14,7 +14,7 @@ export const Main = styled.main`
 export const LeftSide = styled.section`
     background-color: ${({theme}) => theme.colors.white_default};
     grid-column: 2;
-    padding: 2rem;
+    padding: 5rem;
     width: 100%;
     height: 100%;
 `

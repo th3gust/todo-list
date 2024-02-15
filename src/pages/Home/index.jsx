@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Nav from "../../components/Nav";
 import NoteList from "../../components/NotesList";
 import {NotesProvider } from "../../contexts/Notes";
+import Task from "../../components/Task";
 
 const Home = () =>{
     return( 
@@ -12,7 +13,8 @@ const Home = () =>{
                 <Main>
                     <Nav/>
                     <LeftSide>
-                        <NoteList/>
+                        {/* <NoteList/> */}
+                        <Task/>
                     </LeftSide>
                 </Main>
             </NotesProvider>

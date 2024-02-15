@@ -47,4 +47,12 @@ export const ListItem = styled.li`
             }
         }
     `}
+
+    ${({$isclicked: isclicked}) => isclicked && css`
+        font-weight: 400;
+        &::before{
+            content: "//";
+            margin-right: -8rem;
+            
+    `}
 `

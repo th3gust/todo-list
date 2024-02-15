@@ -66,7 +66,16 @@ export const ModalListItem = styled.li`
     `}
 `
 
-export const RightNotes = styled.section`
+export const RightSide = styled.section``
+
+export const ForNotes = styled.section`
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+`
+
+export const ForProjects = styled.section`
     padding: 2.5rem;
     display: flex;
     flex-direction: column;
@@ -90,7 +99,7 @@ export const Textarea  = styled.textarea`
 `
 
 export const Tag = styled.button`
-    max-width: 10rem;
+    max-width: 15rem;
     border: 1px solid ${({theme}) => theme.colors.green};
     color: ${({theme}) => theme.colors.green};
     background-color: transparent;
