@@ -5,19 +5,21 @@ export const ToDoContext = createContext()
 export const ToDoProvider = ({children}) =>{
     const [tasks, setTasks] = useState([
         {
-            id: 0, 
-            done: false, 
-            title: '', 
+            taskId: 0, 
+            done: false,
+            title: '',
+            details: '', 
             date: '', 
-            project: '', 
             priority: ''
         }
     ])
 
-    
+    const addTask = (newTask) =>{
+        setTasks(prev => [...prev, newTask])
+    }
 
     return(
-        <ToDoContext.Provider>
+        <ToDoContext.Provider value={{tasks, addTask}}>
             {children}
         </ToDoContext.Provider>
     )

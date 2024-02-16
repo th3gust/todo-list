@@ -2,11 +2,14 @@ import { Container, ControlSpan, Explain, ForNotes, ForProjects, ForToDo, Inner,
 import Header from "../Header";
 import { useContext, useState } from "react";
 import { NotesContext } from "../../contexts/Notes";
+import { ToDoContext } from "../../contexts/ToDo";
 
 
 const Modal = ({open=false, closeModal}) =>{
+
+    //controle click do nav
     
-    const [isclicked, setisclicked] = useState([])
+    const [isclicked, setisclicked] = useState(['todo'])
 
     const handleClicked = (value) =>{
         if (isclicked.includes(value)){
@@ -15,6 +18,8 @@ const Modal = ({open=false, closeModal}) =>{
             setisclicked([value])
         }
     }
+
+    //controle de click da tag
 
     const [clickedTag, setClickedTag] = useState('');
 
@@ -26,11 +31,13 @@ const Modal = ({open=false, closeModal}) =>{
         }
     };
 
+    //controle das notes
+
     const {notesArr, addNote} = useContext(NotesContext)
     const [titleNote, setTitleNote] = useState('')
     const [detailsNote, setDetailsNote] = useState('')
 
-    const clearInput = () =>{
+    const clearNoteInput = () =>{
         setTitleNote('')
         setDetailsNote('')
     }
@@ -45,12 +52,43 @@ const Modal = ({open=false, closeModal}) =>{
 
         addNote(newNote)
 
-        clearInput();
+        clearNoteInput();
 
         closeModal()
-    }    
+    }
+    
+    //controle dos taks
 
-    console.log(clickedTag)
+    const {tasks, addTask} = useContext(ToDoContext)
+    const [taskTitle, setTaskTitle] = useState('')
+    const [taskDetails, setTaskDetails] = useState('')
+    const [taskDate, setTaskDate] = useState('')
+
+    const clearTaskInput = () =>{
+        setTaskTitle('')
+        setTaskDetails('')
+        setTaskDate('')
+    }
+    
+    const handleTask = () =>{
+
+        const newTask = {
+            taskId: tasks.length > 0 ? tasks[tasks.length - 1].taskId + 1 : 0, 
+            title: taskTitle,
+            details: taskDetails,
+            date: taskDate, 
+            priority: clickedTag,
+        }
+
+        addTask(newTask)
+
+        clearTaskInput()
+
+        closeModal()
+    }
+
+
+    
 
     return(
         <>
@@ -85,12 +123,12 @@ const Modal = ({open=false, closeModal}) =>{
                         {
                             isclicked.includes('todo') &&
                             <ForToDo>
-                                <Input placeholder="Title: Pay bills"/>
-                                <Textarea placeholder="Details: e.g internet, phone, rent"/>
+                                <Input placeholder="Title: Pay bills" value = {taskTitle} onChange={e => setTaskTitle(e.target.value)}/>
+                                <Textarea placeholder="Details: e.g internet, phone, rent" value = {taskDetails} onChange={e => setTaskDetails(e.target.value)}/>
                                 <div>
                                     <ControlSpan>
                                         <Explain>Due Date:</Explain>
-                                        <InputDate type = "date"/>
+                                        <InputDate type = "date" value = {taskDate} onChange={e => setTaskDate(e.target.value)}/>
                                     </ControlSpan>
                                     <ControlSpan>
                                         <Explain>Priority:</Explain>
@@ -99,7 +137,7 @@ const Modal = ({open=false, closeModal}) =>{
                                         <Tag onClick={() => handleClickedTag('high')} className={clickedTag === 'high' ? 'red_selected' : 'red'}>HIGH</Tag>
                                     </ControlSpan>
                                 </div>
-                                <article><Tag>ADD TO DO</Tag></article>
+                                <article><Tag onClick={handleTask}>ADD TO DO</Tag></article>
                              </ForToDo>
                         }
                         
