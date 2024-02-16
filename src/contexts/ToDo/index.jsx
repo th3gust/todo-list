@@ -18,8 +18,12 @@ export const ToDoProvider = ({children}) =>{
         setTasks(prev => [...prev, newTask])
     }
 
+    const detailsTask = (id) =>{
+        return tasks[id]
+    }
+
     return(
-        <ToDoContext.Provider value={{tasks, addTask}}>
+        <ToDoContext.Provider value={{tasks, addTask, detailsTask}}>
             {children}
         </ToDoContext.Provider>
     )

@@ -21,8 +21,6 @@ const Nav = ({variant}) =>{
         }
     }
 
-        console.log(isclicked)
-        
     return (
         <Container>
             <TaskList>

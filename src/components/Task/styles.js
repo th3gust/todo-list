@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components";
-import checkIcon from "../../assets/imgs/check.png"
 
 export const Container = styled.div`
     width: 88rem;
     height: 5rem;
     background-color: ${({theme}) => theme.colors.white};
     position: relative;
+    margin-bottom: 1rem;
 
     &:hover{
         transform: scale(1.003);
@@ -21,7 +21,18 @@ export const Container = styled.div`
 
     &::before{
         content: '';
-        background-color: ${({theme}) => theme.colors.green_default};
+        background-color: ${({theme, $priority: priority}) => {
+            switch(priority){
+                case 'low':
+                    return theme.colors.green
+                case 'medium':
+                    return theme.colors.yellow
+                case 'high':
+                    return theme.colors.red
+                default:
+                    break;
+            }
+        }};
         position: absolute;
         width: .3rem;
         height: 100%;
@@ -37,6 +48,7 @@ export const RightSide = styled.section`
     align-items: center;
     gap: 1.8rem;
     margin-left: 1.5rem;
+    width: 12rem;
 `
 
 export const P = styled.p`
@@ -53,10 +65,11 @@ export const LeftSide = styled.section`
     flex-direction: row;
     align-items: center;
     gap: 2.5rem;
+    width: 30rem;
 `
 
 export const Checked = styled.div`
-    width: 1.75rem;
+    min-width: 1.75rem;
     height: 1.75rem;
     border: 2px solid ${({theme}) => theme.colors.green};
     border-radius: .3rem;
@@ -91,6 +104,7 @@ export const Tag = styled.button`
 `
 
 export const ShowDate = styled.article`
+    width: 8rem;
 
     ${({check}) => check && css`
         opacity: 0.4;
