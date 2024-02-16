@@ -1,4 +1,4 @@
-import { Checked, Container, DetailsModalInner, DetailsModalOuter, Icon, LeftSide, RightSide, ShowDate, Tag } from "./styles";
+import { Checked, Container, DetailsModalInner, DetailsModalOuter, Icon, LeftSide, P, RightSide, ShowDate, Tag } from "./styles";
 import { SlNote } from "react-icons/sl";
 import { FaTrashAlt } from "react-icons/fa";
 import { useState } from "react";
@@ -35,13 +35,13 @@ const Task = () =>{
                         check && <FaCheck />
                     }
                 </Checked>
-                <p>brush teeth</p>
+                <P check={check} >brush teeth</P> 
             </RightSide>
             <LeftSide>
-                <Tag onClick={handleModalOpen}>DETAILS</Tag>
-                <ShowDate>Dec 11th</ShowDate>
-                <Icon><SlNote/></Icon>
-                <Icon><FaTrashAlt/></Icon>
+                <Tag check={check} onClick={handleModalOpen}>DETAILS</Tag>
+                <ShowDate check={check} >Dec 11th</ShowDate>
+                <Icon check={check}><SlNote/></Icon>
+                <Icon check={check}><FaTrashAlt/></Icon>
             </LeftSide>
         </Container>
         <DetailsModalOuter open={openModal}/>

@@ -82,11 +82,111 @@ export const ForProjects = styled.section`
     gap: 3rem;
 `
 
+export const ForToDo = styled.section`
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    position: relative;
+
+    div{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    article{
+        position: absolute;
+        bottom: 2.5rem;
+        right: 10rem;
+    }
+`
+
 export const Input  = styled.input`
     font-size: 1.8rem;
     color: 1px solid ${({theme}) => theme.colors.white};
     outline: none;
     border: none;
+`
+export const InputDate  = styled.input`
+    font-size: 1.8rem;
+    color: ${({theme}) => theme.colors.green};
+    outline: none;
+    border: 2px solid ${({theme}) => theme.colors.green};
+    border-radius: .5rem;
+    padding: .5rem;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+
+`
+
+export const ControlSpan = styled.span`
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+
+    button{
+        margin: 0;
+    }
+
+    .green{
+        color: ${({theme}) => theme.colors.green_default};
+        border: 2px solid ${({theme}) => theme.colors.green_default};
+
+        &:hover{
+            color: ${({theme}) => theme.colors.white};
+            background-color: ${({theme}) => theme.colors.green_default};
+        }
+
+    }
+
+    .green_selected{
+        color: ${({theme}) => theme.colors.white};
+        background-color: ${({theme}) => theme.colors.green_default};
+        border: 2px solid ${({theme}) => theme.colors.green_default};
+        pointer-events: none;
+    }
+
+    .yellow{
+        color: ${({theme}) => theme.colors.yellow};
+        border: 2px solid ${({theme}) => theme.colors.yellow};
+
+        &:hover{
+            color: ${({theme}) => theme.colors.white};
+            background-color: ${({theme}) => theme.colors.yellow};
+        }
+    }
+
+    
+    .yellow_selected{
+        color: ${({theme}) => theme.colors.white};
+        background-color: ${({theme}) => theme.colors.yellow};
+        border: 2px solid ${({theme}) => theme.colors.yellow};
+        pointer-events: none;
+
+    }
+
+    .red{
+        color: ${({theme}) => theme.colors.red};
+        border: 2px solid ${({theme}) => theme.colors.red};
+
+        &:hover{
+            color: ${({theme}) => theme.colors.white};
+            background-color: ${({theme}) => theme.colors.red};
+        }
+    }
+
+    .red_selected{
+        color: ${({theme}) => theme.colors.white};
+        background-color: ${({theme}) => theme.colors.red};
+        border: 2px solid ${({theme}) => theme.colors.red};
+        pointer-events: none;
+    }
+
+`
+
+export const Explain = styled.label`
 `
 
 export const Textarea  = styled.textarea`
@@ -113,5 +213,7 @@ export const Tag = styled.button`
         color: ${({theme}) => theme.colors.white_default};
         background-color: ${({theme}) => theme.colors.green};
     }
+
+
 
 `

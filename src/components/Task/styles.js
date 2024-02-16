@@ -37,11 +37,15 @@ export const RightSide = styled.section`
     align-items: center;
     gap: 1.8rem;
     margin-left: 1.5rem;
+`
 
-    p{
-        font-size: 2rem;
-        font-weight: 300;
-    }
+export const P = styled.p`
+    font-size: 2rem;
+    font-weight: 300;
+    ${({check}) => check && css`
+    text-decoration: line-through;
+    color: ${({theme}) => theme.colors.grey_default};
+    `}
 `
 
 export const LeftSide = styled.section`
@@ -63,7 +67,7 @@ export const Checked = styled.div`
 
     ${({check}) => check && css`
         background-color: ${({theme}) => theme.colors.green};
-        color: ${({theme}) => theme.colors.white}
+        color: ${({theme}) => theme.colors.white};
     `}
 `
 export const Tag = styled.button`
@@ -80,17 +84,31 @@ export const Tag = styled.button`
         background-color:${({theme}) => theme.colors.green};
         color: ${({theme}) => theme.colors.white};
     }
+
+    ${({check}) => check && css`
+        opacity: 0.4;
+    `}
 `
 
 export const ShowDate = styled.article`
 
+    ${({check}) => check && css`
+        opacity: 0.4;
+    `}
+
 `
 
 export const Icon = styled.div`
+    cursor: pointer;
+
     &:hover{
         color: ${({theme}) => theme.colors.green};
         transition: all .3s ease-in-out;
     }
+
+    ${({check}) => check && css`
+        opacity: 0.4;
+    `}
 `
 
 export const DetailsModalInner = styled.dialog`
