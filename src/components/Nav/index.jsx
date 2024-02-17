@@ -1,8 +1,9 @@
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Mark from "../Mark";
 import Modal from "../Modal";
 import { Container, ListItem, TaskList } from "./styles";
+import { ToDoContext } from "../../contexts/ToDo";
 
 const Nav = ({variant}) =>{
 
@@ -21,6 +22,8 @@ const Nav = ({variant}) =>{
         }
     }
 
+    const {projects} = useContext(ToDoContext)
+
     return (
         <Container>
             <TaskList>
@@ -29,9 +32,21 @@ const Nav = ({variant}) =>{
                 <ListItem onClick={() => handleClicked('week')} $isclicked={isclicked.includes('week')}>Week <Mark number="1"/></ListItem>
                 <ListItem $variant>Projects
                     <TaskList $variant>
-                        <ListItem onClick={() => handleClicked('gym')} $isclicked={isclicked.includes('gym')}>Gym <Mark number="1"/></ListItem>
-                        <ListItem onClick={() => handleClicked('study')} $isclicked={isclicked.includes('study')}>Study <Mark number="1"/></ListItem>
-                        <ListItem onClick={() => handleClicked('work')} $isclicked={isclicked.includes('work')}>Work <Mark number="1"/></ListItem>
+
+                        {
+                            projects.map((item,index) =>{
+                                return item===''? null:(
+                                    <ListItem
+                                        key={index}
+                                        onClick={() => handleClicked(item)}
+                                        $isclicked={isclicked.includes(item)}
+                                    >
+                                        {item}
+                                        <Mark number="1"/>
+                                    </ListItem>
+                                )
+                            })
+                        }
                     </TaskList>
                 </ListItem>
                 <ListItem onClick={() => handleClicked('todo')} $isclicked={isclicked.includes('todo')}>Notes</ListItem>

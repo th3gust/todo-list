@@ -58,7 +58,7 @@ const Modal = ({open=false, closeModal}) =>{
     
     //controle dos taks
 
-    const {tasks, addTask} = useContext(ToDoContext)
+    const {tasks, addTask, newProject} = useContext(ToDoContext)
     const [taskTitle, setTaskTitle] = useState('')
     const [taskDetails, setTaskDetails] = useState('')
     const [taskDate, setTaskDate] = useState('')
@@ -87,8 +87,18 @@ const Modal = ({open=false, closeModal}) =>{
         closeModal()
     }
 
+    const [projectTitle, setProjectTitle] = useState('')
 
-    
+    const clearProjectInput = () =>{
+        setProjectTitle('')
+    }
+
+    const handleNewProject = () =>{
+        const projectName = projectTitle
+        newProject(projectName)
+        clearProjectInput()
+        closeModal()
+    }
 
     return(
         <>
@@ -115,9 +125,8 @@ const Modal = ({open=false, closeModal}) =>{
                         {
                             isclicked.includes('project') &&
                             <ForProjects>
-                                <Input placeholder="Title" value={titleNote} onChange={(e) => setTitleNote (e.target.value)}/>
-                                <Textarea placeholder="Details" value={detailsNote} onChange={(e) => setDetailsNote (e.target.value)}/>
-                                <Tag onClick={handleNotes}>CREATE PROJECT</Tag>
+                                <Input placeholder="Title" value={projectTitle} onChange={(e) => setProjectTitle(e.target.value)}/>
+                                <Tag onClick={handleNewProject}>CREATE PROJECT</Tag>
                             </ForProjects>
                         }
                         {
