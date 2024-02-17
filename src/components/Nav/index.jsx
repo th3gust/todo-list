@@ -7,6 +7,8 @@ import { ToDoContext } from "../../contexts/ToDo";
 import ProjectsList from "../ProjectsList";
 
 const Nav = ({variant}) =>{
+    
+    const {projects, selectedProject} = useContext(ToDoContext)
 
     const [openModal, setOpenModal] = useState(false)
     
@@ -21,10 +23,9 @@ const Nav = ({variant}) =>{
         } else{
             setisclicked([value])
         }
-        console.log(isclicked)
+        selectedProject(value)
     }
 
-    const {projects} = useContext(ToDoContext)
 
     return (
         <Container>

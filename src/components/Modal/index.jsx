@@ -58,7 +58,7 @@ const Modal = ({open=false, closeModal}) =>{
     
     //controle dos taks
 
-    const {tasks, addTask, newProject} = useContext(ToDoContext)
+    const {tasks, addTask, newProject, sProject} = useContext(ToDoContext)
     const [taskTitle, setTaskTitle] = useState('')
     const [taskDetails, setTaskDetails] = useState('')
     const [taskDate, setTaskDate] = useState('')
@@ -74,6 +74,7 @@ const Modal = ({open=false, closeModal}) =>{
         const newTask = {
             taskId: tasks.length > 0 ? tasks[tasks.length - 1].taskId + 1 : 0, 
             title: taskTitle,
+            project: sProject? sProject: '',
             done: false,
             details: taskDetails,
             date: taskDate, 

@@ -1,4 +1,3 @@
-import { useState } from "react"
 import Mark from "../Mark"
 import { ListItem } from "./styles"
 

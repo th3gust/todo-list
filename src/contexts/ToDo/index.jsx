@@ -56,13 +56,20 @@ export const ToDoProvider = ({children}) =>{
         focus: false
     }])
 
+    const [sProject, setSProject] = useState('')
+
     const newProject = (project) =>{
         setProjects(prev => [...prev, project])
     }
 
+    const selectedProject = (name) =>{
+        const selected = projects.filter((item) => item.project=== name)
+        setSProject(selected[0].project)
+    }
+
     
     return(
-        <ToDoContext.Provider value={{tasks, addTask, detailsTask, isDone, deleteTask, editTask, projects, newProject}}>
+        <ToDoContext.Provider value={{tasks, addTask, detailsTask, isDone, deleteTask, editTask, projects, newProject, selectedProject, sProject}}>
             {children}
         </ToDoContext.Provider>
     )
