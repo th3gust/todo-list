@@ -95,7 +95,10 @@ const Modal = ({open=false, closeModal}) =>{
     }
 
     const handleNewProject = () =>{
-        const projectName = projectTitle
+        const projectName = {
+            project: projectTitle,
+            focus: false
+        }
         newProject(projectName)
         clearProjectInput()
         closeModal()
