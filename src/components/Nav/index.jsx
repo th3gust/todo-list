@@ -7,6 +7,7 @@ import { ToDoContext } from "../../contexts/ToDo";
 
 const Nav = ({variant}) =>{
 
+    const {projects, selection} = useContext(ToDoContext)
     const [openModal, setOpenModal] = useState(false)
     
     const handleModalOpen = () => setOpenModal(true)
@@ -19,10 +20,11 @@ const Nav = ({variant}) =>{
             setisclicked(isclicked.filter((item => item !== value)))
         } else{
             setisclicked([value])
+            selection(value)
         }
     }
 
-    const {projects} = useContext(ToDoContext)
+    
 
     return (
         <Container>
