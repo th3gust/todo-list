@@ -32,7 +32,6 @@ const Nav = ({variant}) =>{
                 <ListItem onClick={() => handleClicked('week')} $isclicked={isclicked.includes('week')}>Week <Mark number="1"/></ListItem>
                 <ListItem $variant>Projects
                     <TaskList $variant>
-
                         {
                             projects.map((item,index) =>{
                                 return item===''? null:(
