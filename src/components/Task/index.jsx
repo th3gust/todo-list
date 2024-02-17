@@ -33,8 +33,7 @@ const Task = () =>{
     const dateControl = (date) =>{
         const dateString = date
         const dataObject = parseISO(dateString)
-
-        const formattedDate = format(dataObject, 'MMM do')
+        const formattedDate = format(dataObject, 'dd MMM yyyy')
         return formattedDate
     }
 
@@ -62,7 +61,7 @@ const Task = () =>{
             <h1>{selectedTask.title}</h1>
             <p><strong>Project: </strong>{selectedTask.project}</p>
             <p><strong>Priority: </strong>{selectedTask.priority}</p>
-            <p><strong>Due Date: </strong>{selectedTask.date}</p>
+            <p><strong>Due Date: </strong>{dateControl(selectedTask.date)}</p>
             <p><strong>Details: </strong>{selectedTask.details}</p>
             <Button onClick={handleModalClose}/>
         </DetailsModalInner>
