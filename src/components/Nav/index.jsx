@@ -4,6 +4,7 @@ import Mark from "../Mark";
 import Modal from "../Modal";
 import { Container, ListItem, TaskList } from "./styles";
 import { ToDoContext } from "../../contexts/ToDo";
+import ProjectsList from "../ProjectsList";
 
 const Nav = ({variant}) =>{
 
@@ -20,6 +21,7 @@ const Nav = ({variant}) =>{
         } else{
             setisclicked([value])
         }
+        console.log(isclicked)
     }
 
     const {projects} = useContext(ToDoContext)
@@ -35,15 +37,13 @@ const Nav = ({variant}) =>{
 
                         {
                             projects.map((item,index) =>{
-                                return item===''? null:(
-                                    <ListItem
+                                return item.project===''? null:(
+                                    <ProjectsList
                                         key={index}
-                                        onClick={() => handleClicked(item)}
-                                        $isclicked={isclicked.includes(item)}
-                                    >
-                                        {item}
-                                        <Mark number="1"/>
-                                    </ListItem>
+                                        title={item.project}
+                                        onClick={() => handleClicked(item.project)}
+                                        isclicked={isclicked.includes(item.project)}
+                                    />
                                 )
                             })
                         }
