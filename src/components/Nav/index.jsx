@@ -24,8 +24,6 @@ const Nav = ({variant}) =>{
         }
     }
 
-    
-
     return (
         <Container>
             <TaskList>
