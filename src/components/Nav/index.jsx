@@ -38,12 +38,12 @@ const Nav = ({variant}) =>{
 
                         {
                             projects.map((item,index) =>{
-                                return item.project===''? null:(
+                                return (
                                     <ProjectsList
                                         key={index}
-                                        title={item.project}
-                                        onClick={() => handleClicked(item.project)}
-                                        isclicked={isclicked.includes(item.project)}
+                                        title={item}
+                                        onClick={() => handleClicked(item)}
+                                        isclicked={isclicked.includes(item)}
                                     />
                                 )
                             })

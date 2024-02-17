@@ -51,10 +51,7 @@ export const ToDoProvider = ({children}) =>{
         setTasks(updated)
     }
 
-    const [projects, setProjects] = useState([{
-        project: '',
-        focus: false
-    }])
+    const [projects, setProjects] = useState([])
 
     const [sProject, setSProject] = useState('')
 
@@ -63,8 +60,8 @@ export const ToDoProvider = ({children}) =>{
     }
 
     const selectedProject = (name) =>{
-        const selected = projects.filter((item) => item.project=== name)
-        setSProject(selected[0].project)
+        const selected = projects.filter((item) => item === name)
+        setSProject(selected)
     }
 
     
