@@ -51,7 +51,7 @@ const Task = () =>{
         <DetailsModalOuter open={openModal}/>
         <DetailsModalInner open={openModal}>
             <h1>{selectedTask.title}</h1>
-            <p><strong>Project: </strong>home</p>
+            <p><strong>Project: </strong>{selectedTask.project}</p>
             <p><strong>Priority: </strong>{selectedTask.priority}</p>
             <p><strong>Due Date: </strong>{selectedTask.date}</p>
             <p><strong>Details: </strong>{selectedTask.details}</p>
