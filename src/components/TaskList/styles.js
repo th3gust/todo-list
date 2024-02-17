@@ -54,7 +54,7 @@ export const RightSide = styled.section`
 export const P = styled.p`
     font-size: 2rem;
     font-weight: 300;
-    ${({check}) => check && css`
+    ${({$check: check}) => check && css`
     text-decoration: line-through;
     color: ${({theme}) => theme.colors.grey_default};
     `}
@@ -78,7 +78,7 @@ export const Checked = styled.div`
     align-items: center;
     justify-content: center;
 
-    ${({check}) => check && css`
+    ${({$check: check}) => check && css`
         background-color: ${({theme}) => theme.colors.green};
         color: ${({theme}) => theme.colors.white};
     `}
@@ -99,7 +99,7 @@ export const Tag = styled.button`
         color: ${({theme}) => theme.colors.white};
     }
 
-    ${({check}) => check && css`
+    ${({$check: check}) => check && css`
         opacity: 0.4;
     `}
 `
@@ -107,7 +107,7 @@ export const Tag = styled.button`
 export const ShowDate = styled.article`
     width: 8rem;
 
-    ${({check}) => check && css`
+    ${({$check: check}) => check && css`
         opacity: 0.4;
     `}
 
@@ -121,7 +121,7 @@ export const Icon = styled.div`
         transition: all .3s ease-in-out;
     }
 
-    ${({check}) => check && css`
+    ${({$check: check}) => check && css`
         opacity: 0.4;
     `}
 `

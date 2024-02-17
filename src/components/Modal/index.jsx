@@ -84,6 +84,7 @@ const Modal = ({open=false, closeModal}) =>{
         const newTask = {
             taskId: tasks.length > 0 ? tasks[tasks.length - 1].taskId + 1 : 0, 
             title: taskTitle,
+            done: false,
             details: taskDetails,
             date: dateControl(taskDate), 
             priority: clickedTag,

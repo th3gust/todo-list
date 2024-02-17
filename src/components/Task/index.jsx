@@ -19,9 +19,10 @@ const Task = () =>{
 
     const [selectedTask, setSelectedTask] = useState({})
 
-    const handleModalOpen = (id) => {
-        setSelectedTask(detailsTask(id))
+    const handleModalOpen = (e) => {
+        const id = e.target.parentNode.parentNode.id
         setOpenModal(true)
+        setSelectedTask(detailsTask(id))
     }
 
     const handleModalClose = () =>{
@@ -40,7 +41,7 @@ const Task = () =>{
                             priority={item.priority}
                             title={item.title}
                             date={item.date}
-                            onClick={handleModalOpen}
+                            onClick={e => handleModalOpen(e)}
                         />
                     )
                 })

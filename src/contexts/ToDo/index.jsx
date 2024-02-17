@@ -22,8 +22,20 @@ export const ToDoProvider = ({children}) =>{
         return tasks[id]
     }
 
+    const isDone = (id) =>{
+        const updatedTasks = tasks.map((task) =>{
+            if (task.taskId === id){
+                return {...task, done: !task.done}
+            }
+            return task
+        })
+
+        setTasks(updatedTasks)
+        console.log(tasks)
+    }
+
     return(
-        <ToDoContext.Provider value={{tasks, addTask, detailsTask}}>
+        <ToDoContext.Provider value={{tasks, addTask, detailsTask, isDone}}>
             {children}
         </ToDoContext.Provider>
     )
