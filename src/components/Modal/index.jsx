@@ -3,8 +3,6 @@ import Header from "../Header";
 import { useContext, useState } from "react";
 import { NotesContext } from "../../contexts/Notes";
 import { ToDoContext } from "../../contexts/ToDo";
-import { format, parseISO } from "date-fns";
-
 
 const Modal = ({open=false, closeModal}) =>{
 
@@ -70,14 +68,6 @@ const Modal = ({open=false, closeModal}) =>{
         setTaskDetails('')
         setTaskDate('')
     }
-
-    const dateControl = (date) =>{
-        const dateString = date
-        const dataObject = parseISO(dateString)
-
-        const formattedDate = format(dataObject, 'MMM do')
-        return formattedDate
-    }
     
     const handleTask = () =>{
 
@@ -86,7 +76,7 @@ const Modal = ({open=false, closeModal}) =>{
             title: taskTitle,
             done: false,
             details: taskDetails,
-            date: dateControl(taskDate), 
+            date: taskDate, 
             priority: clickedTag,
         }
 

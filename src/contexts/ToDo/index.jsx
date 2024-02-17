@@ -31,11 +31,26 @@ export const ToDoProvider = ({children}) =>{
         })
 
         setTasks(updatedTasks)
-        console.log(tasks)
     }
 
+    const deleteTask = (id) => {
+        const updated = tasks.filter((item) => item.taskId !== id)
+        setTasks(updated)
+    }
+
+    const editTask = (id, edited) =>{
+        const updated = tasks.map((task) =>{
+            if (task.taskId === id){
+                return {...task, ...edited}
+            }
+            return task
+        })
+
+        setTasks(updated)
+    }
+ 
     return(
-        <ToDoContext.Provider value={{tasks, addTask, detailsTask, isDone}}>
+        <ToDoContext.Provider value={{tasks, addTask, detailsTask, isDone, deleteTask, editTask}}>
             {children}
         </ToDoContext.Provider>
     )

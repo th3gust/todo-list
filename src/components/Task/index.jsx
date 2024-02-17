@@ -40,6 +40,7 @@ const Task = () =>{
                             id={item.taskId}
                             priority={item.priority}
                             title={item.title}
+                            details = {item.details}
                             date={item.date}
                             onClick={e => handleModalOpen(e)}
                         />
