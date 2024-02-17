@@ -31,6 +31,9 @@ const Task = () =>{
     }
 
     const dateControl = (date) =>{
+        if (date === undefined){
+            return date
+        }
         const dateString = date
         const dataObject = parseISO(dateString)
         const formattedDate = format(dataObject, 'dd MMM yyyy')
