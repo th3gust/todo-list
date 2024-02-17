@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import Button from "../Button"
 import {ToDoContext} from "../../contexts/ToDo"
 import TaskList from "../TaskList";
+import { format, parseISO } from "date-fns";
 
 
 const Task = () =>{
@@ -27,6 +28,14 @@ const Task = () =>{
 
     const handleModalClose = () =>{
         setOpenModal(false)
+    }
+
+    const dateControl = (date) =>{
+        const dateString = date
+        const dataObject = parseISO(dateString)
+
+        const formattedDate = format(dataObject, 'MMM do')
+        return formattedDate
     }
 
     return (

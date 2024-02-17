@@ -4,7 +4,6 @@ import Mark from "../Mark";
 import Modal from "../Modal";
 import { Container, ListItem, TaskList } from "./styles";
 import { ToDoContext } from "../../contexts/ToDo";
-import ProjectsList from "../ProjectsList";
 
 const Nav = ({variant}) =>{
 
@@ -37,13 +36,15 @@ const Nav = ({variant}) =>{
                     <TaskList $variant>
                         {
                             projects.map((item,index) =>{
-                                return (
-                                    <ProjectsList
+                                return item===''? null:(
+                                    <ListItem
                                         key={index}
-                                        title={item}
                                         onClick={() => handleClicked(item)}
-                                        isclicked={isclicked.includes(item)}
-                                    />
+                                        $isclicked={isclicked.includes(item)}
+                                    >
+                                        {item}
+                                        <Mark number="1"/>
+                                    </ListItem>
                                 )
                             })
                         }

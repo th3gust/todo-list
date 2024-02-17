@@ -8,7 +8,6 @@ export const ToDoProvider = ({children}) =>{
         {
             taskId: 0, 
             done: false,
-            project: '',
             title: '',
             details: '', 
             date: '', 
