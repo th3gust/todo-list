@@ -1,6 +1,6 @@
 import { Container, ControlSpan, Explain, ForNotes, ForProjects, ForToDo, Inner, InnerNav, Input, InputDate, ModalList, ModalListItem, Outer, RightSide, Tag, Textarea} from "./styles";
 import Header from "../Header";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NotesContext } from "../../contexts/Notes";
 import { ToDoContext } from "../../contexts/ToDo";
 
@@ -58,7 +58,7 @@ const Modal = ({open=false, closeModal}) =>{
     
     //controle dos taks
 
-    const {tasks, addTask, newProject, selectedProject} = useContext(ToDoContext)
+    const {tasks, addTask, newProject, selectedProject, counter} = useContext(ToDoContext)
     const [taskTitle, setTaskTitle] = useState('')
     const [taskDetails, setTaskDetails] = useState('')
     const [taskDate, setTaskDate] = useState('')
@@ -68,6 +68,14 @@ const Modal = ({open=false, closeModal}) =>{
         setTaskDetails('')
         setTaskDate('')
     }
+
+    //ORGANIZAR DEPOIS
+    // const handleDate = (e) =>{
+    //     const date = new Date()
+    //     const dataString = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate()}`
+    //     const value = e.target.value
+    //     setTaskDate(value??dataString)
+    // }
     
     const handleTask = () =>{
 
@@ -86,6 +94,8 @@ const Modal = ({open=false, closeModal}) =>{
         clearTaskInput()
 
         closeModal()
+
+        counter()
     }
 
     const [projectTitle, setProjectTitle] = useState('')

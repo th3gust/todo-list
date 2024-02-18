@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const ToDoContext = createContext()
 
@@ -14,6 +14,17 @@ export const ToDoProvider = ({children}) =>{
             priority: ''
         }
     ])
+    const [projects, setProjects] = useState([''])
+    const [selectedProject, setSelectProject] = useState('') 
+    const [countProjects, setCountProjects] = useState({})
+
+    const counter = () =>{
+        const count = {}
+        tasks.forEach(({project}) =>{
+            count[project] = (count[project] || 0) + 1
+        })
+        setCountProjects(count)
+    }
 
     const addTask = (newTask) =>{
         setTasks(prev => [...prev, newTask])
@@ -50,8 +61,7 @@ export const ToDoProvider = ({children}) =>{
         setTasks(updated)
     }
 
-    const [projects, setProjects] = useState([''])
-    const [selectedProject, setSelectProject] = useState('') 
+   
     
     const newProject = (project) =>{
         setProjects(prev => [...prev, project])
@@ -62,7 +72,7 @@ export const ToDoProvider = ({children}) =>{
     }
 
     return(
-        <ToDoContext.Provider value={{tasks, addTask, detailsTask, isDone, deleteTask, editTask, projects, selectedProject, newProject, selection}}>
+        <ToDoContext.Provider value={{tasks, addTask, detailsTask, isDone, deleteTask, editTask, projects, selectedProject, newProject, selection, countProjects,counter}}>
             {children}
         </ToDoContext.Provider>
     )

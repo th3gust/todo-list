@@ -7,7 +7,7 @@ import { ToDoContext } from "../../contexts/ToDo";
 
 const Nav = ({variant}) =>{
 
-    const {projects, selection} = useContext(ToDoContext)
+    const {projects, selection, countProjects} = useContext(ToDoContext)
     const [openModal, setOpenModal] = useState(false)
     
     const handleModalOpen = () => setOpenModal(true)
@@ -41,7 +41,7 @@ const Nav = ({variant}) =>{
                                         $isclicked={isclicked.includes(item)}
                                     >
                                         {item}
-                                        <Mark number="1"/>
+                                        <Mark number={countProjects[item] || 0}/>
                                     </ListItem>
                                 )
                             })
